@@ -11,39 +11,49 @@ public class PagamentoView extends JPanel{
 	
 	public PagamentoView(JPanel principal, CardLayout card) {
 		
+		setLayout(new BorderLayout());
 		
 		
-		JPanel armazenar = new JPanel();
-		armazenar.setMaximumSize(new Dimension(824, 480));
-		armazenar.setLayout(new BorderLayout());
-		armazenar.setAlignmentX(Component.CENTER_ALIGNMENT);
-		armazenar.setOpaque(false);
-		armazenar.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 
 		
-		JLabel titulo = new JLabel("Área de Pagamento");
-		titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
-		titulo.setFont(new Font("Arial", Font.PLAIN, 17));
+		JLabel titulo = new JLabel("Área de Pagamento", SwingConstants.CENTER);
+		titulo.setFont(new Font("Arial", Font.PLAIN, 20));
 		
 		JPanel armazenarTitulo = new JPanel();
-		armazenarTitulo.setLayout(new BoxLayout(armazenarTitulo, BoxLayout.Y_AXIS));
-		armazenarTitulo.add(Box.createVerticalStrut(0));
+		armazenarTitulo.setLayout(new BorderLayout());
+		armazenarTitulo.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
 		armazenarTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
 		armazenarTitulo.setOpaque(false);
 		armazenarTitulo.add(titulo);
 		
+		JPanel centralizar = new JPanel();
+		centralizar.setOpaque(false);
+		centralizar.setLayout(new GridBagLayout());
 		
+		JPanel armazenar = new JPanel();
+		armazenar.setLayout(new BoxLayout(armazenar, BoxLayout.Y_AXIS));
+		armazenar.setPreferredSize(new Dimension(824, 480));
+		armazenar.setOpaque(false);
+		armazenar.setBorder(BorderFactory.createLineBorder(Color.black));
 		
-		JButton selecionar = new JButton("Selecione a opção");
-		selecionar.setPreferredSize(new Dimension(195, 25 ));
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.insets = new Insets(-45, 0, 0, 0);
+		centralizar.add(armazenar, gbc);
+		
+		String[] opcoesPagamento = {"Cartão", "Pix", "Boleto"};
+	
+		
+		JComboBox<String> selecionar = new JComboBox<>(opcoesPagamento);
+		selecionar.setPreferredSize(new Dimension(200, 27));
+		selecionar.setAlignmentX(Component.CENTER_ALIGNMENT);
+		selecionar.setBorder(BorderFactory.createLineBorder(Color.black));
 		selecionar.setBackground(Color.WHITE);
-		selecionar.setFocusPainted(false);
 		
 		JPanel panelSelecionar = new JPanel();
-		panelSelecionar.setLayout(new FlowLayout());
 		panelSelecionar.setPreferredSize(new Dimension(200, 150));
-		panelSelecionar.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+		panelSelecionar.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+		panelSelecionar.setOpaque(false);
 		panelSelecionar.add(selecionar);
 			
 		
@@ -53,8 +63,10 @@ public class PagamentoView extends JPanel{
 		armazenar.add(panelSelecionar);
 		
 		
-		add(armazenar, BorderLayout.CENTER);
+		
+		add(centralizar);
 		add(armazenarTitulo, BorderLayout.NORTH);
+		
 
 		setBackground(Color.LIGHT_GRAY);
 		
