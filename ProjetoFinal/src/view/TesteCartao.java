@@ -43,9 +43,22 @@ public class TesteCartao {
 		campoNumCartao.setMaximumSize(new Dimension(100, 35));
 		campoNumCartao.add(numCartao);
 		
-		cartao.add(panelInfoCartao, BorderLayout.NORTH);
-		cartao.add(panelLabelNumCartao, BorderLayout.WEST);
-		cartao.add(campoNumCartao, BorderLayout.SOUTH);
+		GridBagConstraints gbcPanelInfoCartao = new GridBagConstraints();
+		gbcPanelInfoCartao.anchor = GridBagConstraints.WEST;
+		gbcPanelInfoCartao.gridy = 0;
+		gbcPanelInfoCartao.gridx = 0;
+		gbcPanelInfoCartao.insets = new Insets(-530, -400, 0, 0);
+		
+		
+		GridBagConstraints gbcLabelNumCartao = new GridBagConstraints();
+		gbcLabelNumCartao.insets = new Insets(10, 0, 0, 0);
+		
+		
+		
+		container.add(panelInfoCartao, gbcPanelInfoCartao);
+		container.add(panelLabelNumCartao, gbcLabelNumCartao);
+		//container.add(campoNumCartao, gbc);
+		cartao.add(container);
 		
 		
 		
@@ -56,3 +69,4 @@ public class TesteCartao {
 	}
 
 }
+
