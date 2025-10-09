@@ -12,53 +12,51 @@ public class TesteCartao {
 		tela.setSize(1024, 640);
 		tela.setLayout(new BorderLayout());
 		
-		JPanel container = new JPanel();
-		container.setOpaque(false);
-		container.setLayout(new GridBagLayout());
-		
 		JPanel cartao = new JPanel();
 		cartao.setLayout(new BorderLayout());
 		
-		JLabel infoCartao = new JLabel("Cadastro de Cartão");
-		infoCartao.setFont(new Font("Arial", Font.PLAIN, 19));
+		JPanel container = new JPanel();
+		container.setOpaque(false);
+		container.setLayout(new GridBagLayout());
+		container.setBorder(BorderFactory.createEmptyBorder(-450, -252, 0, 0));
 		
-		JPanel panelInfoCartao = new JPanel();
-		panelInfoCartao.setLayout(new FlowLayout(FlowLayout.LEFT));
-		panelInfoCartao.setBorder(BorderFactory.createEmptyBorder(10, 155, 0, 0));
-		panelInfoCartao.add(infoCartao);
 		
-		JPanel panelLabelNumCartao = new JPanel();
-		panelLabelNumCartao.setLayout(new FlowLayout());
-		panelLabelNumCartao.setBorder(BorderFactory.createEmptyBorder(30, 155, 0 ,0));
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		gbc.insets = new Insets(5, 10, 5, 10);
+		gbc.anchor = GridBagConstraints.NORTHWEST;
+		
+		
+		JLabel titulo = new JLabel("Cadastro de cartão");
+		titulo.setFont(new Font("Arial", Font.PLAIN, 17));		
+		
+		JPanel panelTitulo = new JPanel();
+		panelTitulo.setBorder(BorderFactory.createEmptyBorder(35, -255, 0, 0));
+		panelTitulo.add(titulo);
 		
 		JLabel labelNumCartao = new JLabel("Digite o numero do cartão");
-		panelLabelNumCartao.add(labelNumCartao);
 		
-		JPanel campoNumCartao = new JPanel();
-		campoNumCartao.setLayout(new BoxLayout(campoNumCartao, BoxLayout.Y_AXIS));
+		JPanel panelNumCartao = new JPanel();
+		panelNumCartao.add(labelNumCartao);
 		
+		JTextField campoNumCartao = new JTextField(17);
+		campoNumCartao.setPreferredSize(new Dimension(500, 25));
 		
-		JTextField numCartao = new JTextField(15);
-		campoNumCartao.setAlignmentX(Component.LEFT_ALIGNMENT);
-		campoNumCartao.setMaximumSize(new Dimension(100, 35));
-		campoNumCartao.add(numCartao);
+		JPanel panelCampoNumCartao = new JPanel();
+		panelCampoNumCartao.setPreferredSize(new Dimension(500, 25));
+		panelCampoNumCartao.add(campoNumCartao);
 		
-		GridBagConstraints gbcPanelInfoCartao = new GridBagConstraints();
-		gbcPanelInfoCartao.anchor = GridBagConstraints.WEST;
-		gbcPanelInfoCartao.gridy = 0;
-		gbcPanelInfoCartao.gridx = 0;
-		gbcPanelInfoCartao.insets = new Insets(-530, -400, 0, 0);
+	
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		container.add(panelNumCartao, gbc);
 		
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		container.add(panelCampoNumCartao, gbc);
 		
-		GridBagConstraints gbcLabelNumCartao = new GridBagConstraints();
-		gbcLabelNumCartao.insets = new Insets(10, 0, 0, 0);
-		
-		
-		
-		container.add(panelInfoCartao, gbcPanelInfoCartao);
-		container.add(panelLabelNumCartao, gbcLabelNumCartao);
-		//container.add(campoNumCartao, gbc);
-		cartao.add(container);
+		cartao.add(container, BorderLayout.CENTER);
+		cartao.add(panelTitulo, BorderLayout.NORTH);
 		
 		
 		
@@ -69,4 +67,6 @@ public class TesteCartao {
 	}
 
 }
+}
+
 
