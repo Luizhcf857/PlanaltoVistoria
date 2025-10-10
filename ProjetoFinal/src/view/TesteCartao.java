@@ -9,7 +9,7 @@ public class TesteCartao {
 		JFrame tela = new JFrame("teste cartao");
 		
 		tela.setDefaultCloseOperation(tela.EXIT_ON_CLOSE);
-		tela.setSize(1024, 640);
+		tela.setSize(824, 480);
 		tela.setLayout(new BorderLayout());
 		
 		JPanel cartao = new JPanel();
@@ -17,9 +17,12 @@ public class TesteCartao {
 		
 		JPanel container = new JPanel();
 		container.setOpaque(false);
+		container.setSize(824, 480);
+		container.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		container.setLayout(new GridBagLayout());
-		container.setBorder(BorderFactory.createEmptyBorder(-450, -252, 0, 0));
 		
+		
+		container.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 		
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -28,32 +31,97 @@ public class TesteCartao {
 		
 		
 		JLabel titulo = new JLabel("Cadastro de cartão");
-		titulo.setFont(new Font("Arial", Font.PLAIN, 17));		
+		titulo.setFont(new Font("Arial", Font.PLAIN, 17));
+		titulo.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JPanel panelTitulo = new JPanel();
-		panelTitulo.setBorder(BorderFactory.createEmptyBorder(35, -255, 0, 0));
+		panelTitulo.setBorder(BorderFactory.createEmptyBorder(35, 0, 0, 0));
 		panelTitulo.add(titulo);
 		
 		JLabel labelNumCartao = new JLabel("Digite o numero do cartão");
-		
-		JPanel panelNumCartao = new JPanel();
-		panelNumCartao.add(labelNumCartao);
+	
 		
 		JTextField campoNumCartao = new JTextField(17);
-		campoNumCartao.setPreferredSize(new Dimension(500, 25));
+		campoNumCartao.setPreferredSize(new Dimension(300, 25));
 		
 		JPanel panelCampoNumCartao = new JPanel();
-		panelCampoNumCartao.setPreferredSize(new Dimension(500, 25));
+		panelCampoNumCartao.setLayout(new BorderLayout());
+		panelCampoNumCartao.setPreferredSize(new Dimension(300, 25));
 		panelCampoNumCartao.add(campoNumCartao);
+		
+		JLabel bandeiraCartao = new JLabel("Selecione a bandeira do cartao");
+		
+		
+		
+		String[] bandeiras = {"Mastercard", "Visa", "Elo"};
+		
+		JComboBox<String> selecionarBandeira = new JComboBox(bandeiras);
+		selecionarBandeira.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		selecionarBandeira.setPreferredSize(new Dimension(150, 25));
+		selecionarBandeira.setSelectedIndex(-1);
+		selecionarBandeira.setFocusable(false);
+		selecionarBandeira.setBackground(Color.WHITE);
+		
+		JLabel labelNome = new JLabel("Digite o nome do titular");
+		
+		
+		
+		
+		JTextField campoNome= new JTextField(100);
+		campoNome.setPreferredSize(new Dimension(300, 25));
+		
+		JPanel panelCampoNome = new JPanel();
+		panelCampoNome.setLayout(new BorderLayout());
+		panelCampoNome.setPreferredSize(new Dimension(300, 25));
+		panelCampoNome.setOpaque(false);
+		panelCampoNome.add(campoNome);
+		
+		
+		
+
+		
+		
+		
+		
+
+		
+		
+		
 		
 	
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		container.add(panelNumCartao, gbc);
+	
+		container.add(labelNumCartao, gbc);
 		
 		gbc.gridx = 0;
 		gbc.gridy = 1;
+		gbc.insets = new Insets(0, 0, 0, 0);
 		container.add(panelCampoNumCartao, gbc);
+		
+		gbc.gridx = 1;
+		gbc.gridy = 0;
+		gbc.insets = new Insets(0, 62 ,0, 0);
+		container.add(bandeiraCartao, gbc);
+		
+		gbc.gridx = 1;
+		gbc.gridy = 1;
+		gbc.insets = new Insets(-3, 68, 0, 0);
+		container.add(selecionarBandeira, gbc);
+		
+		gbc.gridx = 0;
+		gbc.gridy = 2;
+		gbc.insets = new Insets(9, -5, 0, 0);
+		container.add(labelNome, gbc);
+		
+		gbc.gridx = 0;
+		gbc.gridy = 3;
+		gbc.fill = GridBagConstraints.NONE;
+		gbc.insets = new Insets(0, 0, 0, 0);
+		container.add(panelCampoNome, gbc);
+		
+		gbc.weighty = 1.0; 
+		container.add(Box.createVerticalGlue(), gbc);
 		
 		cartao.add(container, BorderLayout.CENTER);
 		cartao.add(panelTitulo, BorderLayout.NORTH);
@@ -67,6 +135,6 @@ public class TesteCartao {
 	}
 
 }
-}
+
 
 
