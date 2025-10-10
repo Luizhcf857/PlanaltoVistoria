@@ -79,15 +79,25 @@ public class TesteCartao {
 		JLabel cvc = new JLabel("Digite o cvc do cartão");
 		
 		
-		JTextField campoCvc = new JTextField();
-		campoCvc.setPreferredSize(new Dimension(100, 25));
+		JTextField campoCvc = new JTextField(3);
+		campoCvc.setPreferredSize(new Dimension(120, 25));
 		
 		JPanel panelCampoCvc = new JPanel();
 		panelCampoCvc.setLayout(new BorderLayout());
-		panelCampoCvc.setPreferredSize(new Dimension(100, 25));
+		panelCampoCvc.setPreferredSize(new Dimension(120, 25));
 		panelCampoCvc.setOpaque(false);
 		panelCampoCvc.add(campoCvc);
 		
+		JLabel labelCpf = new JLabel("Digite o cpf do titular");
+		
+		JTextField campoCpf = new JTextField(11);
+		campoCpf.setPreferredSize(new Dimension(200, 25));
+		
+		JPanel panelCampoCpf = new JPanel();
+		panelCampoCpf.setLayout(new BorderLayout());
+		panelCampoCpf.setPreferredSize(new Dimension(200, 25));
+		panelCampoCpf.setOpaque(false);
+		panelCampoCpf.add(campoCpf);
 	
 		gbc.gridx = 0;
 		gbc.gridy = 0;
@@ -121,10 +131,25 @@ public class TesteCartao {
 		gbc.insets = new Insets(10, 0, 0, 0);
 		container.add(panelCampoNome, gbc);
 		
-		gbc.gridx = 9;
-		gbc.gridy = 9;
-		gbc.insets = new Insets(0, 0, 0, 0);
-		container.add(campoCvc);
+		gbc.gridx = 1;
+		gbc.gridy = 3;
+		gbc.insets = new Insets(-17, 65, 0, 0);
+		container.add(cvc, gbc);
+		
+		gbc.gridx = 1;
+		gbc.gridy = 4;
+		gbc.insets = new Insets(-26, 68, 0, 0);
+		container.add(panelCampoCvc, gbc);
+		
+		gbc.gridx = 0;
+		gbc.gridy = 5;
+		gbc.insets = new Insets(17, 0, 0, 0);
+		container.add(labelCpf, gbc);
+		
+		gbc.gridx = 0;
+		gbc.gridy = 6;
+		gbc.insets = new Insets(10, 0, 0, 0);
+		container.add(panelCampoCpf, gbc);
 		
 		gbc.weighty = 1.0; 
 		container.add(Box.createVerticalGlue(), gbc);
@@ -141,7 +166,5 @@ public class TesteCartao {
 	}
 
 }
-
-
 
 
