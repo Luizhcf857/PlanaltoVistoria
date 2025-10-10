@@ -76,49 +76,55 @@ public class TesteCartao {
 		panelCampoNome.setOpaque(false);
 		panelCampoNome.add(campoNome);
 		
+		JLabel cvc = new JLabel("Digite o cvc do cartão");
 		
 		
-
+		JTextField campoCvc = new JTextField();
+		campoCvc.setPreferredSize(new Dimension(100, 25));
 		
-		
-		
-		
-
-		
-		
-		
+		JPanel panelCampoCvc = new JPanel();
+		panelCampoCvc.setLayout(new BorderLayout());
+		panelCampoCvc.setPreferredSize(new Dimension(100, 25));
+		panelCampoCvc.setOpaque(false);
+		panelCampoCvc.add(campoCvc);
 		
 	
 		gbc.gridx = 0;
 		gbc.gridy = 0;
+		gbc.insets = new Insets(10, 0, 0, 0);
 	
 		container.add(labelNumCartao, gbc);
 		
 		gbc.gridx = 0;
 		gbc.gridy = 1;
-		gbc.insets = new Insets(0, 0, 0, 0);
+		gbc.insets = new Insets(10, 0, 0, 0);
 		container.add(panelCampoNumCartao, gbc);
 		
 		gbc.gridx = 1;
 		gbc.gridy = 0;
-		gbc.insets = new Insets(0, 62 ,0, 0);
+		gbc.insets = new Insets(7, 65 ,0, 0);
 		container.add(bandeiraCartao, gbc);
 		
 		gbc.gridx = 1;
 		gbc.gridy = 1;
-		gbc.insets = new Insets(-3, 68, 0, 0);
+		gbc.insets = new Insets(7, 68, 0, 0);
 		container.add(selecionarBandeira, gbc);
 		
 		gbc.gridx = 0;
 		gbc.gridy = 2;
-		gbc.insets = new Insets(9, -5, 0, 0);
+		gbc.insets = new Insets(17, 0, 0, 0);
 		container.add(labelNome, gbc);
 		
 		gbc.gridx = 0;
 		gbc.gridy = 3;
 		gbc.fill = GridBagConstraints.NONE;
-		gbc.insets = new Insets(0, 0, 0, 0);
+		gbc.insets = new Insets(10, 0, 0, 0);
 		container.add(panelCampoNome, gbc);
+		
+		gbc.gridx = 9;
+		gbc.gridy = 9;
+		gbc.insets = new Insets(0, 0, 0, 0);
+		container.add(campoCvc);
 		
 		gbc.weighty = 1.0; 
 		container.add(Box.createVerticalGlue(), gbc);
@@ -135,6 +141,7 @@ public class TesteCartao {
 	}
 
 }
+
 
 
 
