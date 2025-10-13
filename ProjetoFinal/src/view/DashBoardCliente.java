@@ -397,7 +397,7 @@ public class DashBoardCliente extends JPanel {
                     pagamento = PagamentoDAO.pegarPorVistoria(idVistoria);
                 }
 
-                // Se não existe, cria um novo (mas não insere ainda!)
+                // Se não existir, cria um novo (mas não insere ainda!)
                 if (pagamento == null) {
                     pagamento = new PagamentoController();
                     pagamento.setCliente(clienteAtual);
@@ -408,33 +408,34 @@ public class DashBoardCliente extends JPanel {
 
                     pagamento.setStatusPagamento("Pendente");
                     pagamento.setDataPagamento(new java.sql.Date(System.currentTimeMillis()));
-
-                    // ⚠️ NÃO CADASTRAR AQUI!
-                    // PagamentoDAO.cadastrarPagamento(pagamento);
                 }
 
-                // Verifica se a tela de pagamento já existe
-                PagamentoView telaPagamento = null;
+                // Verifica se já existe um painel do tipo PagamentoView
+                Component pagamentoExistente = null;
                 for (Component comp : painelPrincipal.getComponents()) {
                     if (comp instanceof PagamentoView) {
-                        telaPagamento = (PagamentoView) comp;
+                        pagamentoExistente = comp;
                         break;
                     }
                 }
 
                 // Se não existir, cria e adiciona
-                if (telaPagamento == null) {
-                    telaPagamento = new PagamentoView(painelPrincipal, cardPrincipal, pagamento);
-                    painelPrincipal.add(telaPagamento, "Pagamento");
+                if (pagamentoExistente == null) {
+                    PagamentoView novaTelaPagamento = new PagamentoView(painelPrincipal, cardPrincipal, pagamento);
+                    painelPrincipal.add(novaTelaPagamento, "telaPagamento");
                 }
 
                 // Mostra a tela de pagamento
-                cardPrincipal.show(painelPrincipal, "Pagamento");
+                cardPrincipal.show(painelPrincipal, "telaPagamento");
+
+                // Log (opcional)
+                System.out.println(">> Redirecionado para tela de pagamento");
             }
 
             isPushed = false;
             return label;
         }
+
 
     }
 
