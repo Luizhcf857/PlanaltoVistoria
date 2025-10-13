@@ -88,9 +88,9 @@ create index idx_Veiculos_Placa on Veiculos(Placa);
 create index idx_Agendamento_Data on Agendamento(Data_Agendamento);
 create index idx_Vistoria_Data  on Vistoria(Data_vistoria);
 
-INSERT INTO autenticacao (idFuncionario, email, senha) VALUES (1, 'gerente@empresa.com', '123');
-INSERT INTO autenticacao (idFuncionario, email, senha) VALUES (2, 'vistoriador@empresa.com', '456');
-INSERT INTO autenticacao (idCliente, email, senha) VALUES (4, 'cliente@empresa.com', '789');
+INSERT INTO autenticacao (email, senha) VALUES ('gerente@empresa.com', '123');
+INSERT INTO autenticacao (idFuncionario, email, senha) VALUES (1, 'vistoriador@empresa.com', '456');
+INSERT INTO autenticacao (idCliente, email, senha) VALUES (1, 'cliente@empresa.com', '789');
 
 
 
