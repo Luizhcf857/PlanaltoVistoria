@@ -13,8 +13,8 @@ Id_Funcionarios int primary key auto_increment,
 Nome varchar (150) not null,
 Cpf varchar (11) not null,
 Cargo varchar (50) not null,
-Telefone varchar (11) not null,
-Email varchar(100) not null
+Telefone varchar (11) not null
+
 );
 create table Veiculos(
 Id_Veiculos int primary key auto_increment,
@@ -99,26 +99,6 @@ BEGIN
 END$$
 DELIMITER ;
 
-DELIMITER $$
-CREATE TRIGGER after_funcionario_insert
-AFTER INSERT ON Funcionarios
-FOR EACH ROW
-BEGIN
-    INSERT INTO autenticacao (idFuncionario, email, senha)
-    VALUES (NEW.Id_Funcionarios, NEW.Email, '1234');
-END$$
-DELIMITER ;
 
 INSERT INTO autenticacao (email, senha) VALUES ('gerente@empresa.com', '123');
 INSERT INTO autenticacao (idFuncionario, email, senha) VALUES (1, 'vistoriador@empresa.com', '456');
-INSERT INTO autenticacao (idCliente, email, senha) VALUES (1, 'cliente@empresa.com', '789');
-
-
-	SELECT * FROM autenticacao;
-    SELECT * FROM pagamento;
-
-
-
-
-
-
