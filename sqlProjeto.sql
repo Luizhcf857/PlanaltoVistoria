@@ -114,7 +114,8 @@ INSERT INTO autenticacao (idFuncionario, email, senha) VALUES (1, 'vistoriador@e
 INSERT INTO autenticacao (idCliente, email, senha) VALUES (1, 'cliente@empresa.com', '789');
 
 
-
+	SELECT * FROM autenticacao;
+    SELECT * FROM pagamento;
 
 
 
