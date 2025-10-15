@@ -15,9 +15,9 @@
    - [Funcionalidades](#funcionalidades)  
 5. [Resultados](#resultados)  
 6. [Considerações Finais](#considerações-finais)  
-7. [Apêndice A — Estrutura dos Principais Arquivos](#apêndice-a-—-estrutura-dos-principais-arquivos)  
-8. [Apêndice B — Diagrama Simplificado de Navegação](#apêndice-b-—-diagrama-simplificado-de-navegação)  
-9. [Instalação e Execução](#instalação-e-execução)  
+7. [Agradecimentos](#agradecimentos)  
+8. [Apêndice A — Estrutura dos Principais Arquivos](#apêndice-a-—-estrutura-dos-principais-arquivos)  
+9. [Apêndice B — Diagrama Simplificado de Navegação](#apêndice-b-—-diagrama-simplificado-de-navegação)  
 
 ---
 
@@ -76,8 +76,8 @@ O sistema segue uma **arquitetura em camadas (MVC):**
 
 **DashBoardGerente**  
 - Gerenciamento de funcionários (cadastro, edição, exclusão)  
-- Resumo estatístico de desempenho  
-- Relatórios gerenciais (em desenvolvimento)  
+- Situação de funcionários (status)  
+- Relatórios financeiros (faturamento, pagamentos)  
 
 **DashBoardCliente**  
 - Visualização e edição de dados pessoais  
@@ -106,6 +106,12 @@ O projeto atende aos requisitos funcionais primários de uma empresa de vistoria
 
 ---
 
+## Agradecimentos
+
+Agradecemos ao professor **Hudson Neves**, orientador deste projeto, pelo apoio técnico, pelas sugestões construtivas e pela orientação contínua ao longo do desenvolvimento do sistema.
+
+---
+
 ## Apêndice A — Estrutura dos Principais Arquivos
 
 | Arquivo | Descrição |
@@ -118,6 +124,5 @@ O projeto atende aos requisitos funcionais primários de uma empresa de vistoria
 | controller/AgendamentoController.java | Lógica de agendamento |
 
 ---
-
 
 
