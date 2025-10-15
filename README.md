@@ -119,5 +119,5 @@ O projeto atende aos requisitos funcionais primários de uma empresa de vistoria
 
 ---
 
-## Apêndice B — Diagrama Simplificado de Navegação
+
 
