@@ -6,6 +6,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.util.List;
+import model.PagamentoController;
+import dao.PagamentoDAO;
 
 import controller.FuncionarioController;
 import model.Funcionario;
@@ -45,7 +47,7 @@ public class DashBoardGerente extends JPanel {
 
         painelCards.add(criarPainelResumo(), "Resumo");
         painelCards.add(criarPainelFuncionarios(), "Funcionarios");
-        painelCards.add(criarPainelRelatorio(), "Relatorio");
+        painelCards.add(criarPainelRelatorioFinanceiro(), "RelatorioFinanceiro");
 
         add(barraSuperior, BorderLayout.NORTH);
         add(painelCards, BorderLayout.CENTER);
@@ -71,6 +73,10 @@ public class DashBoardGerente extends JPanel {
         JButton btnFuncionarios = criarBotaoMenu("Funcionários");
         JButton btnRelat = criarBotaoMenu("Relatórios");
         JButton btnSair = criarBotaoMenu("Sair");
+        
+        JButton btnFinanceiro = criarBotaoMenu("Financeiro");
+        btnFinanceiro.addActionListener(e -> layoutCards.show(painelCards, "RelatorioFinanceiro"));
+        menuBotoes.add(btnFinanceiro);
 
         btnResumo.addActionListener(e -> layoutCards.show(painelCards, "Resumo"));
         btnFuncionarios.addActionListener(e -> {
@@ -240,10 +246,47 @@ public class DashBoardGerente extends JPanel {
         return btn;
     }
 
-    private JPanel criarPainelRelatorio() {
-        JPanel painel = new JPanel();
+    private JPanel criarPainelRelatorioFinanceiro() {
+        JPanel painel = new JPanel(new BorderLayout(10, 10));
         painel.setBackground(new Color(30, 30, 30));
-        painel.add(new JLabel("Relatório de Funcionários (em construção...)"));
+        painel.setBorder(new EmptyBorder(20, 20, 20, 20));
+
+        JLabel titulo = new JLabel("Relatório Financeiro");
+        titulo.setFont(new Font("Segoe UI", Font.BOLD, 26));
+        titulo.setForeground(Color.WHITE);
+        painel.add(titulo, BorderLayout.NORTH);
+
+        String[] colunas = {"Cliente", "ID Vistoria", "Valor", "Data Pagamento", "Forma", "Status"};
+        DefaultTableModel modelFinanceiro = new DefaultTableModel(colunas, 0) {
+            public boolean isCellEditable(int r, int c) { return false; }
+        };
+
+        JTable tabelaFinanceiro = new JTable(modelFinanceiro);
+        tabelaFinanceiro.setRowHeight(28);
+        tabelaFinanceiro.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        tabelaFinanceiro.setBackground(new Color(45, 45, 45));
+        tabelaFinanceiro.setForeground(Color.WHITE);
+
+        JTableHeader header = tabelaFinanceiro.getTableHeader();
+        header.setBackground(new Color(60, 60, 60));
+        header.setForeground(Color.WHITE);
+
+        // Carrega os dados do DAO
+        List<PagamentoController> pagamentos = dao.PagamentoDAO.mostrarHistoricoDePagamentos();
+        for (PagamentoController p : pagamentos) {
+            // Aqui você pode buscar o nome do cliente se quiser mostrar ao invés do ID
+            String nomeCliente = (p.getCliente() != null && p.getCliente().getNome() != null) ? p.getCliente().getNome() : String.valueOf(p.getCliente().getId_Cliente());
+            modelFinanceiro.addRow(new Object[]{
+                nomeCliente,
+                p.getVistoria() != null ? p.getVistoria().getIdVistoria() : "",
+                String.format("R$ %.2f", p.getValor()),
+                p.getDataPagamento(),
+                p.getFormaPagamento(),
+                p.getStatusPagamento()
+            });
+        }
+
+        painel.add(new JScrollPane(tabelaFinanceiro), BorderLayout.CENTER);
         return painel;
     }
 
