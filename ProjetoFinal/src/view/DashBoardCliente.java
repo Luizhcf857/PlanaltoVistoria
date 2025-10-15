@@ -262,6 +262,7 @@ public class DashBoardCliente extends JPanel {
 
     private void carregarAgendamentosClienteComPagamento() {
         modelTabela.setRowCount(0);
+        if (clienteAtual == null) return; // <-- Adicione esta linha
         agendamentos = AgendamentoDAO.listarPorCliente(clienteAtual.getId_Cliente());
         if (agendamentos == null) return;
 
@@ -330,7 +331,9 @@ public class DashBoardCliente extends JPanel {
 
     private void carregarRelatoriosCliente() {
         modelRelatorio.setRowCount(0);
+        if (clienteAtual == null) return; // <-- Adicione esta linha
         List<Agendamento> agendamentosCliente = AgendamentoDAO.listarPorCliente(clienteAtual.getId_Cliente());
+        if (agendamentosCliente == null) return; // <-- Adicione esta linha
         for (Agendamento ag : agendamentosCliente) {
             List<Vistoria> vistorias = VistoriaDAO.listarPorAgendamento(ag.getIdAgendamento());
             for (Vistoria v : vistorias) {
