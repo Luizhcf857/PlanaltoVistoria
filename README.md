@@ -100,7 +100,6 @@ O sistema segue uma **arquitetura em camadas (MVC):**
 
 O projeto atende aos requisitos funcionais primários de uma empresa de vistoria veicular.  
 **Futuras expansões sugeridas:**  
-- Integração com banco de dados relacional (MySQL, PostgreSQL)  
 - Notificações automáticas por e-mail/SMS  
 - Controle de acesso refinado por níveis de permissão
 
